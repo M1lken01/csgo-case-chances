@@ -1,6 +1,8 @@
 {
-    "tries": 500,
-    "delay": 0.001,
+    "no-save": false,
+    "cases": 9999,
+    "delay": 0.01,
     "auto": false,
-    "reset": true
+    "reset": true,
+    "gold-stop": true
 }
