@@ -1,0 +1,6 @@
+{
+    "tries": 500,
+    "delay": 0.001,
+    "auto": false,
+    "reset": true
+}
