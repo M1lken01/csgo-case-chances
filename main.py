@@ -14,53 +14,49 @@ limit = 0
 
 def main():
     system("title CSGO case odds simulator")
-    global data, cfg
-    with open("cfg.json", "r") as db:
-        d = json.load(db)
-        db.close()
-    cfg = d
-    print(colored.bg(234) + str(cfg).replace(', ', '\n').replace('{', '').replace('}', ''))
+    global data
+    print(colored.bg(234) + str(cfg).replace(', ', '\n').replace('{', '').replace('}', '').replace('[', '').replace(']', ''))
     print(f'| count   | quality | quality |' + colored.bg(0))
     caseLoop()
 
 
 def caseLoop():
-    if cfg["reset"]:
+    if cfg_cfg["reset"]:
         global data
         data = {"tries": 0, "blue": 0, "purple": 0, "pink": 0, "red": 0, "gold": 0}
     global stop, limit
     limit += 1
     m = 0
     c = colored.bg(235)
-    while m < cfg["cases"] and stop == False:
+    while m < cfg_cfg["cases"] and stop == False:
         n = random.randint(0, 9999999)
         m += 1
         t = "none"
         data["tries"] += 1
-        if n <= 25575:
+        if n <= odd_cfg["gold"]:
             data["gold"] += 1
             t = "Gold"
             c = colored.bg(colors["gold"]) + dark
-            if cfg["gold-stop"]:
+            if cfg_cfg["gold-stop"]:
                 stop = True
-        elif n <= 89514:
+        elif n <= odd_cfg["red"]:
             data["red"] += 1
             t = "Red"
             c = colored.bg(colors["red"])
-        elif n <= 409207:
+        elif n <= odd_cfg["pink"]:
             data["pink"] += 1
             t = "Pink"
             c = colored.bg(colors["pink"])
-        elif n <= 2007672:
+        elif n <= odd_cfg["purple"]:
             data["purple"] += 1
             t = "Purple"
             c = colored.bg(colors["purple"])
-        elif n <= 9999999:
+        elif n <= odd_cfg["blue"]:
             data["blue"] += 1
             t = "Blue"
             c = colored.bg(colors["blue"])
         print(c + f'| {m:07} | {n:07} | {t:7} |' + colored.bg(0) + light)
-        time.sleep(cfg["delay"])
+        time.sleep(cfg_cfg["delay"])
     saveToDb()
 
 
@@ -71,7 +67,7 @@ def saveToDb():
     
     d.append(data)
     getData = d
-    if not cfg["no-save"]:
+    if not cfg_cfg["no-save"]:
         with open("db.json", "w") as db:
             json.dump(d, db)
             db.close()
@@ -90,7 +86,7 @@ Info:
  Cases   : {db["tries"]:07}{colored.bg(0)}
 ---------------------------------""")
     global stop, limit
-    if stop or cfg["auto"] == False or limit == cfg["auto-limit"]:
+    if stop or cfg_cfg["auto"] == False or limit == cfg_cfg["auto-limit"]:
         limit = 0
         stop = False
         input('Enter to continue.\n')
@@ -98,4 +94,11 @@ Info:
 
 
 if __name__ == '__main__':
+    with open("cfg.json", "r") as db:
+        d = json.load(db)
+        db.close()
+    cfg = d
+    clr_cfg = cfg[0]
+    cfg_cfg = cfg[1]
+    odd_cfg = cfg[2]
     main()

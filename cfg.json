@@ -1,9 +1,23 @@
-{
-    "no-save": true,
-    "cases": 99,
-    "delay": 0.01,
-    "auto": false,
-    "reset": true,
-    "gold-stop": false,
-    "auto-limit": 3
-}
+[{
+        "blue": 18,
+        "purple": 54,
+        "pink": 161,
+        "red": 124,
+        "gold": 136
+    },
+    {
+        "no-save": true,
+        "cases": 99,
+        "delay": 0.01,
+        "auto": false,
+        "reset": true,
+        "gold-stop": false,
+        "auto-limit": 3
+    }, {
+        "blue": 9999999,
+        "purple": 2007672,
+        "pink": 409207,
+        "red": 89514,
+        "gold": 25575
+    }
+]
