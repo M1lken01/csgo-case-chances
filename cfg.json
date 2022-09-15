@@ -1,8 +1,9 @@
 {
-    "no-save": false,
-    "cases": 9999,
+    "no-save": true,
+    "cases": 99,
     "delay": 0.01,
     "auto": false,
     "reset": true,
-    "gold-stop": true
+    "gold-stop": false,
+    "auto-limit": 3
 }

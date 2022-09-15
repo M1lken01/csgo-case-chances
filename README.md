@@ -1,4 +1,4 @@
-# CSGO case chances
+# CSGO case odds
 
 Simulates opening a lot of CSGO cases at once.
 
